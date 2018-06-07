@@ -7,3 +7,12 @@ C:\Users\maike\Google Drive\School\Fontys\Semester 2\Visual Studio\Musicshop\DAL
 C:\Users\maike\Google Drive\School\Fontys\Semester 2\Visual Studio\Musicshop\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\maike\Google Drive\School\Fontys\Semester 2\Visual Studio\Musicshop\DAL\obj\Debug\DAL.dll
 C:\Users\maike\Google Drive\School\Fontys\Semester 2\Visual Studio\Musicshop\DAL\obj\Debug\DAL.pdb
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\DAL\bin\Debug\DAL.dll
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\DAL\bin\Debug\DAL.pdb
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\DAL\bin\Debug\Models.dll
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\DAL\bin\Debug\Models.pdb
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\DAL\obj\Debug\DAL.dll
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\DAL\obj\Debug\DAL.pdb
