@@ -11,7 +11,7 @@ namespace Musicshop.Controllers
     public class UserController : Controller
     {
         private UserRepo userrepo = new UserRepo();
-        // GET: User
+
         public ActionResult Index()
         {
             return View();
@@ -35,6 +35,27 @@ namespace Musicshop.Controllers
             }
             string message = user.ToString();
             ViewBag.Message = message;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(User register)
+        {
+            string message = "";
+            message = userrepo.Register(register);
+
+            if (message == "Succes")
+            {
+                Login(register);
+                return View(register);
+            }
+
             return View();
         }
     }

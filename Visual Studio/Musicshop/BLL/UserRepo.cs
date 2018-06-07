@@ -15,9 +15,9 @@ namespace Musicshop.BLL
             return context.Login(email, password);
         }
 
-        public bool CreateUser(User user)
+        public string Register(User user)
         {
-            return context.CreateUser(user);
+            return context.Register(user);
         }
 
         public bool UpdateUser(User user)

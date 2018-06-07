@@ -6,7 +6,7 @@ using Musicshop.Models;
 
 namespace Musicshop.DAL
 {
-    public class UserSQLContext : IUserContext
+    public class UserSQLContext
     {
         public object Login(string email, string password)
         {
@@ -24,17 +24,18 @@ namespace Musicshop.DAL
                         resultUser = (int)cmd.ExecuteScalar();
                         connection.Close();
                     }
-                    catch (Exception e)
+                    catch (Exception ex)
                     {
-                        Console.WriteLine(e);
+                        Console.WriteLine(ex);
                         connection.Close();
                         return "Account Gegevens bestaan niet.";
                     }
+
                     User user = new User();
                     connection.Open();
                     SqlCommand sqlCom = connection.CreateCommand();
 
-                    sqlCom.CommandText = @"SELECT * FROM Users WHERE email = @email AND password = @password";
+                    sqlCom.CommandText = @"SELECT * FROM [Users] WHERE email = @email AND password = @password";
                     sqlCom.Parameters.Add("@email", SqlDbType.VarChar);
                     sqlCom.Parameters.Add("@password", SqlDbType.VarChar);
                     sqlCom.Parameters["@email"].Value = email;
@@ -55,10 +56,11 @@ namespace Musicshop.DAL
                         }
                     }
                     return user;
-                    //sqlCom.Parameters.AddWithValue("@email", email);
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex);
+                    connection.Close();
                     return "error";
                 }
                 finally
@@ -68,7 +70,7 @@ namespace Musicshop.DAL
             }
         }
 
-        public bool CreateUser(User user)
+        public string Register(User user)
         {
             using (SqlConnection connection = Database.Connection)
             {
@@ -94,11 +96,12 @@ namespace Musicshop.DAL
 
                     connection.Open();
                     sqlCom.ExecuteNonQuery();
-                    return true;
+                    return "Succes";
                 }
                 catch (Exception ex)
                 {
-                    return false;
+                    Console.WriteLine(ex);
+                    return "error";
                 }
                 finally
                 {
