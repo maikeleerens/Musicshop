@@ -1,0 +1,83 @@
+﻿@using Musicshop.Models;
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Musicshop</title>
+        @* Extra header tags suchs as a robots noindex can be added via @ViewBag.Inject*@
+        @Html.Raw(ViewBag.Inject)
+
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+    </head>
+    <body class="@ViewBag.BodyClass">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img src="~/Content/Images/logo.png" alt="Musicshop">
+            </a>
+            @{
+                var user = Session["User"] as User;
+            }               
+
+       
+            @if (user != null)
+            {
+                if (user.Role.Roleid == 1)
+                {
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            @Html.ActionLink("Mijn account", "MyAccount", "User")
+                        </li>
+                        &nbsp;
+                        <li class="nav-item">
+                            @Html.ActionLink("Mijn bestellingen", "MyOrders", "User")
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Uitloggen", "LogOut", "User")
+                        </li>
+                    </ul>
+                }
+                else if (user.Role.Roleid == 2)
+                {
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            @Html.ActionLink("Dashboard", "EstateOverviewForAdmin", "Estate")
+                        </li>
+                        &nbsp;
+                        <li class="nav-item">
+                            @Html.ActionLink("Uitloggen", "LogOut", "User")
+                        </li>
+                    </ul>
+                }
+            }
+            else
+            {
+                <nav class="navbar-nav">
+                    <li class="nav-item">
+                        @Html.ActionLink("Login", "Login", "User")
+                    </li>
+                    &nbsp;
+                    <li class="nav-item">
+                        @Html.ActionLink("Registreren", "Register", "User")
+                    </li>
+                </nav>
+            }
+        </nav>
+
+
+    <div class="container body-content">
+        @RenderBody()
+
+        <div class="copyright">
+            <p>&copy; 2018 - Mirabeau</p>
+        </div>
+    </div>
+
+    <footer>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        <script>jQuery.validator.methods["date"] = function (value, element) { return true; }</script>
+    </footer>
