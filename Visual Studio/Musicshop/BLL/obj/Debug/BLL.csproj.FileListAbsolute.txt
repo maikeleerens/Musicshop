@@ -10,3 +10,15 @@ C:\Users\maike\Google Drive\School\Fontys\Semester 2\Visual Studio\Musicshop\BLL
 C:\Users\maike\Google Drive\School\Fontys\Semester 2\Visual Studio\Musicshop\BLL\obj\Debug\BLL.dll
 C:\Users\maike\Google Drive\School\Fontys\Semester 2\Visual Studio\Musicshop\BLL\obj\Debug\BLL.pdb
 C:\Users\maike\Google Drive\School\Fontys\Semester 2\Visual Studio\Musicshop\BLL\bin\Debug\BLL.dll.config
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\bin\Debug\BLL.dll.config
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\bin\Debug\BLL.dll
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\bin\Debug\BLL.pdb
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\bin\Debug\DAL.dll
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\bin\Debug\Models.dll
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\bin\Debug\DAL.pdb
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\bin\Debug\Models.pdb
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\obj\Debug\BLL.dll
+D:\School\Fontys\Musicshop\Visual Studio\Musicshop\BLL\obj\Debug\BLL.pdb

@@ -23,8 +23,16 @@ namespace Musicshop
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/font.css",
+                      "~/Content/bootstrap.min.css",                      
+                      "~/Content/site.css",                 
+                      "~/Content/slick.css",
+                      "~/Content/slick-theme.css",
+                      "~/Content/nouislider.min.css",
+                      "~/Content/font-awesome.min.css"));
+
+            bundles.Add(new StyleBundle("~/content/style").Include(
+                      "~/Content/style.css"));
         }
     }
 }
