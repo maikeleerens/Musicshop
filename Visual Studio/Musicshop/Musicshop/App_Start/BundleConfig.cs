@@ -24,7 +24,7 @@ namespace Musicshop
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/font.css",
-                      "~/Content/bootstrap.min.css",                      
+                      "~/Content/bootstrap.css",                      
                       "~/Content/site.css",                 
                       "~/Content/slick.css",
                       "~/Content/slick-theme.css",

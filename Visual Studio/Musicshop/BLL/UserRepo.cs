@@ -8,12 +8,7 @@ namespace Musicshop.BLL
 {
     public class UserRepo
     {
-        private IUserContext context;
-
-        public UserRepo(IUserContext context)
-        {
-            this.context = context;
-        }
+        private UserSQLContext context = new UserSQLContext();
 
         public object Login(string email, string password)
         {

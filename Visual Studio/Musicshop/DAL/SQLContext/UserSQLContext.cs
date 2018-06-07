@@ -10,26 +10,48 @@ namespace Musicshop.DAL
     {
         public object Login(string email, string password)
         {
+            int resultUser;
             using (SqlConnection connection = Database.Connection)
             {
                 try
                 {
-                    object user = null;
+                    try
+                    {
+                        connection.Open();
+                        SqlCommand cmd = new SqlCommand(@"SELECT userid FROM [Users] WHERE email=@email and password=@password", connection);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@password", password);
+                        resultUser = (int)cmd.ExecuteScalar();
+                        connection.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        connection.Close();
+                        return "Account Gegevens bestaan niet.";
+                    }
+                    User user = new User();
+                    connection.Open();
                     SqlCommand sqlCom = connection.CreateCommand();
 
                     sqlCom.CommandText = @"SELECT * FROM Users WHERE email = @email AND password = @password";
                     sqlCom.Parameters.Add("@email", SqlDbType.VarChar);
                     sqlCom.Parameters.Add("@password", SqlDbType.VarChar);
                     sqlCom.Parameters["@email"].Value = email;
-                    sqlCom.Parameters["@password"].Value = email;
-
-                    connection.Open();
+                    sqlCom.Parameters["@password"].Value = password;                    
                     
                     using (SqlDataReader reader = sqlCom.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            user = new User(GetRoleById(reader.GetInt32(1)) as Role, reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), email, password);
+                            user.Userid = reader.GetInt32(0);
+                            user.Role = GetRoleById(reader.GetInt32(1)) as Role;
+                            user.Name = reader.GetString(2);
+                            user.Address = reader.GetString(3);
+                            user.Zipcode = reader.GetString(4);
+                            user.City = reader.GetString(5);
+                            user.Email = email;
+                            user.Password = password;
                         }
                     }
                     return user;
