@@ -1,0 +1,50 @@
+﻿@using Musicshop.Models;
+
+@{
+    ViewBag.Title = "Mijn Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["User"] == null)
+{
+    Response.Redirect("../Home/Index");
+}
+else
+{
+    var user = Session["User"] as User;
+
+    if (user != null)
+    {
+    <div style="height: 100%; float:left; margin-bottom:20px;">
+        <table class="table" style="float:left;">
+            <tbody>
+
+                <tr>
+                    <th scope="row">Naam:</th>
+                    <td>@user.Name</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Adres:</th>
+                    <td>@user.Address</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Postcode:</th>
+                    <td>@user.Zipcode</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Stad:</th>
+                    <td>@user.City</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Email:</th>
+                    <td>@user.Email</td>
+                </tr>
+        </table>
+        @Html.ActionLink("Uw account gegevens aanpassen", "Edit", new { id = user.Userid, controller = "User" }, new { @class = "btn btn-success", id = user.Userid })
+    </div>
+    }
+}

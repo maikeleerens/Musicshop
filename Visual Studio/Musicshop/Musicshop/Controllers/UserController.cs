@@ -30,7 +30,7 @@ namespace Musicshop.Controllers
 
             if (user is User)
             {
-                Session["User"] = user;
+                Session["User"] = user as User;
                 return RedirectToAction("Index", "Home");
             }
             string message = user.ToString();
@@ -61,6 +61,18 @@ namespace Musicshop.Controllers
                 ViewBag.Message = "Dit emailadres is al geregistreerd!";
                 return View(register);
             }            
+        }
+
+        public ActionResult MyAccount()
+        {
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }           
         }
     }
 }
