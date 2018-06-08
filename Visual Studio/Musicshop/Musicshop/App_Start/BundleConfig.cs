@@ -28,8 +28,14 @@ namespace Musicshop
                       "~/Content/site.css",                 
                       "~/Content/slick.css",
                       "~/Content/slick-theme.css",
-                      "~/Content/nouislider.min.css",
-                      "~/Content/font-awesome.min.css"));
+                      "~/Content/nouislider.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Font-Awesome").Include(
+                      "~/Content/fa-brands.css",
+                      "~/Content/fa-regular.css",
+                      "~/Content/fa-solid.css",
+                      "~/Content/fontawesome-all.css",
+                      "~/Content/fontawesome.css"));
 
             bundles.Add(new StyleBundle("~/content/style").Include(
                       "~/Content/style.css"));

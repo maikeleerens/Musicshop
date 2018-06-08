@@ -20,9 +20,14 @@ namespace Musicshop.BLL
             return context.Register(user);
         }
 
-        public bool UpdateUser(User user)
+        public object GetUserById(int id)
         {
-            return context.UpdateUser(user);
+            return context.GetUserById(id);
+        }
+
+        public string EditUser(User user)
+        {
+            return context.EditUser(user);
         }
 
         public bool DeleteUser(User user)

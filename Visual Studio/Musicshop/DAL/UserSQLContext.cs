@@ -96,7 +96,7 @@ namespace Musicshop.DAL
 
                     connection.Open();
                     sqlCom.ExecuteNonQuery();
-                    return "Succes";
+                    return "Success";
                 }
                 catch (Exception ex)
                 {
@@ -110,7 +110,50 @@ namespace Musicshop.DAL
             }
         }
 
-        public bool UpdateUser(User user)
+        public object GetUserById(int id)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                try
+                {
+                    User user = new User();
+                    connection.Open();
+                    SqlCommand sqlCom = connection.CreateCommand();
+
+                    sqlCom.CommandText = @"SELECT * FROM [Users] WHERE userid = @id";
+                    sqlCom.Parameters.Add("@id", SqlDbType.Int);
+                    sqlCom.Parameters["@id"].Value = id;
+
+                    using (SqlDataReader reader = sqlCom.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            user.Userid = id;
+                            user.Role = GetRoleById(reader.GetInt32(1)) as Role;
+                            user.Name = reader.GetString(2);
+                            user.Address = reader.GetString(3);
+                            user.Zipcode = reader.GetString(4);
+                            user.City = reader.GetString(5);
+                            user.Email = reader.GetString(6);
+                            user.Password = reader.GetString(7);
+                        }
+                    }
+                    return user;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    connection.Close();
+                    return "error";
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public string EditUser(User user)
         {
             using (SqlConnection connection = Database.Connection)
             {
@@ -118,28 +161,30 @@ namespace Musicshop.DAL
                 {
                     SqlCommand sqlCom = connection.CreateCommand();
 
-                    sqlCom.CommandText = @"UPDATE Users SET name=@Name, address=@Address, zipcode=@Zipcode, city=@City, email=@Email, password=@Password WHERE email=@Email AND password=@Password";
+                    sqlCom.CommandText = @"UPDATE Users SET name=@Name, address=@Address, zipcode=@Zipcode, city=@City, email=@Email WHERE userid=@id";
                     sqlCom.Parameters.Add("@Name", SqlDbType.NChar);
                     sqlCom.Parameters.Add("@Address", SqlDbType.NChar);
                     sqlCom.Parameters.Add("@Zipcode", SqlDbType.NChar);
                     sqlCom.Parameters.Add("@City", SqlDbType.NChar);
                     sqlCom.Parameters.Add("@Email", SqlDbType.NChar);
-                    sqlCom.Parameters.Add("@Password", SqlDbType.NChar);
+                    sqlCom.Parameters.Add("@id", SqlDbType.Int);
 
                     sqlCom.Parameters["@Name"].Value = user.Name;
                     sqlCom.Parameters["@Address"].Value = user.Address;
                     sqlCom.Parameters["@Zipcode"].Value = user.Zipcode;
                     sqlCom.Parameters["@City"].Value = user.City;
                     sqlCom.Parameters["@Email"].Value = user.Email;
-                    sqlCom.Parameters["@Password"].Value = user.Password;
+                    sqlCom.Parameters["@id"].Value = user.Userid;
+
 
                     connection.Open();
                     sqlCom.ExecuteNonQuery();
-                    return true;
+                    return "Success";
                 }
                 catch (Exception ex)
                 {
-                    return false;
+                    Console.WriteLine(ex);
+                    return "Error";
                 }
                 finally
                 {

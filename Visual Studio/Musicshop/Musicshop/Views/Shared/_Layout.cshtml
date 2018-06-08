@@ -11,6 +11,7 @@
 
         @Styles.Render("~/Content/css")
         @Styles.Render("~/Content/style")
+        @Styles.Render("~/Content/Font-Awesome")
         @Scripts.Render("~/bundles/modernizr")
 
         @{
@@ -25,33 +26,33 @@
             <div id="top-header">
                 <div class="container">
                     <ul class="header-links pull-left">
-                        <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-                        <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-                        <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +021-95-51-84</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> email@email.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker"></i> 1734 Stonecoal Road</a></li>
                     </ul>
                     @if (user != null)
                     {
                         if (user.Role.Roleid == 1)
                         {
                             <ul class="header-links pull-right">
-                                <li><i class="fa fa-user-o"></i>@Html.ActionLink("Mijn account", "MyAccount", "User")</li>
-                                <li><i class="fa fa-user-o"></i>@Html.ActionLink("Mijn bestellingen", "MyOrders", "User")</li>
-                                <li><i class="fa fa-user-o"></i>@Html.ActionLink("Uitloggen", "LogOut", "User")</li>
+                                <li><i class="far fa-user"></i>@Html.ActionLink("Mijn account", "MyAccount", "User")</li>
+                                <li><i class="fas fa-receipt"></i>@Html.ActionLink("Mijn bestellingen", "MyOrders", "User")</li>
+                                <li><i class="fas fa-sign-out-alt"></i>@Html.ActionLink("Uitloggen", "LogOut", "User")</li>
                             </ul>
                         }
                         else if (user.Role.Roleid == 2)
                         {
                             <ul class="header-links pull-right">
-                                <li><i class="fa fa-user-o"></i>@Html.ActionLink("Dashboard", "EstateOverviewForAdmin", "Estate")</li>
-                                <li><i class="fa fa-user-o"></i>@Html.ActionLink("Uitloggen", "LogOut", "User")</li>
+                                <li><i class="far fa-user"></i>@Html.ActionLink("Dashboard", "EstateOverviewForAdmin", "Estate")</li>
+                                <li><i class="fas fa-sign-out-alt"></i>@Html.ActionLink("Uitloggen", "LogOut", "User")</li>
                             </ul>
                         }
                     }
                     else
                     {
                         <ul class="header-links pull-right">
-                            <li><i class="fa fa-user-o"></i>@Html.ActionLink("Login", "Login", "User")</li>
-                            <li><i class="fa fa-user-o"></i>@Html.ActionLink("Registreren", "Register", "User")</li>
+                            <li><i class="fas fa-sign-in-alt"></i>@Html.ActionLink("Login", "Login", "User")</li>
+                            <li><i class="fas fa-sign-in-alt"></i>@Html.ActionLink("Registreren", "Register", "User")</li>
                         </ul>
                     }
                 </div>
@@ -93,7 +94,7 @@
                                 <!-- Wishlist -->
                                 <div>
                                     <a href="#">
-                                        <i class="fa fa-heart-o"></i>
+                                        <i class="fas fa-heart"></i>
                                         <span>Your Wishlist</span>
                                         <div class="qty">2</div>
                                     </a>
@@ -102,7 +103,7 @@
                                 <!-- Cart -->
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                        <i class="fa fa-shopping-cart"></i>
+                                        <i class="fas fa-shopping-cart"></i>
                                         <span>Your Cart</span>
                                         <div class="qty">3</div>
                                     </a>
@@ -116,7 +117,7 @@
                                                     <h3 class="product-name"><a href="#">product name goes here</a></h3>
                                                     <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
                                                 </div>
-                                                <button class="delete"><i class="fa fa-close"></i></button>
+                                                <button class="delete"><i class="fas fa-times-square"></i></button>
                                             </div>
 
                                             <div class="product-widget">
@@ -127,7 +128,7 @@
                                                     <h3 class="product-name"><a href="#">product name goes here</a></h3>
                                                     <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
                                                 </div>
-                                                <button class="delete"><i class="fa fa-close"></i></button>
+                                                <button class="delete"><i class="fas fa-times-square"></i></button>
                                             </div>
                                         </div>
                                         <div class="cart-summary">
@@ -136,7 +137,7 @@
                                         </div>
                                         <div class="cart-btns">
                                             <a href="#">View Cart</a>
-                                            <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a href="#">Checkout  <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +145,7 @@
                                 <!-- Menu Toogle -->
                                 <div class="menu-toggle">
                                     <a href="#">
-                                        <i class="fa fa-bars"></i>
+                                        <i class="fas fa-bars"></i>
                                         <span>Menu</span>
                                     </a>
                                 </div>
@@ -228,9 +229,9 @@
                                 <h3 class="footer-title">About Us</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
                                 <ul class="footer-links">
-                                    <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-                                    <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                                    <li><a href="#"><i class="fas fa-map-marker"></i>1734 Stonecoal Road</a></li>
+                                    <li><a href="#"><i class="fas fa-phone"></i>+021-95-51-84</a></li>
+                                    <li><a href="#"><i class="fas fa-envelope"></i>email@email.com</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -288,18 +289,16 @@
                     <div class="row">
                         <div class="col-md-12 text-center">
                             <ul class="footer-payments">
-                                <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-                                <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-                                <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-                                <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-                                <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-                                <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+                                <li><a href="#"><i class="fab fa-cc-visa"></i></a></li>
+                                <li><a href="#"><i class="fas fa-credit-card"></i></a></li>
+                                <li><a href="#"><i class="fab fa-cc-paypal"></i></a></li>
+                                <li><a href="#"><i class="fab fa-cc-mastercard"></i></a></li>
+                                <li><a href="#"><i class="fab fa-cc-discover"></i></a></li>
+                                <li><a href="#"><i class="fab fa-cc-amex"></i></a></li>
                             </ul>
                             <span class="copyright">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;
                                 2018 - Musicshop
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </span>
 
 
