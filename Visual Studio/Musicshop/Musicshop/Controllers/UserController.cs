@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Musicshop.BLL;
 using Musicshop.Models;
 
@@ -61,6 +62,13 @@ namespace Musicshop.Controllers
                 ViewBag.Message = "Dit emailadres is al geregistreerd!";
                 return View(register);
             }            
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult MyAccount()
