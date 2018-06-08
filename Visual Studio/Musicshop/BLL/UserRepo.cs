@@ -8,21 +8,16 @@ namespace Musicshop.BLL
 {
     public class UserRepo
     {
-        private IUserContext context;
-
-        public UserRepo(IUserContext context)
-        {
-            this.context = context;
-        }
+        private UserSQLContext context = new UserSQLContext();
 
         public object Login(string email, string password)
         {
             return context.Login(email, password);
         }
 
-        public bool CreateUser(User user)
+        public string Register(User user)
         {
-            return context.CreateUser(user);
+            return context.Register(user);
         }
 
         public bool UpdateUser(User user)
