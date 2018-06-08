@@ -101,7 +101,7 @@ namespace Musicshop.DAL
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
-                    return "error";
+                    return "Error";
                 }
                 finally
                 {

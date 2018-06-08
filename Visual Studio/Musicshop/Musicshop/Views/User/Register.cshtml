@@ -1,16 +1,22 @@
 ﻿@model Musicshop.Models.User
 
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Registreren";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        <strong>@ViewBag.Message</strong>
+    </div>
+}
 <h2>Register</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>User</h4>
         <hr />

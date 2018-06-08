@@ -47,16 +47,20 @@ namespace Musicshop.Controllers
         [HttpPost]
         public ActionResult Register(User register)
         {
-            string message = "";
+            string message = null;
             message = userrepo.Register(register);
 
             if (message == "Succes")
             {
+                ViewBag.Message = "Account is succesvol aangemaakt!";
                 Login(register);
-                return View(register);
+                return RedirectToAction("Index", "Home");
             }
-
-            return View();
+            else
+            {
+                ViewBag.Message = "Dit emailadres is al geregistreerd!";
+                return View(register);
+            }            
         }
     }
 }
