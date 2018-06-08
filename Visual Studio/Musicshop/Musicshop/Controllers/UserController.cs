@@ -13,11 +13,6 @@ namespace Musicshop.Controllers
     {
         private UserRepo userrepo = new UserRepo();
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult Login()
         {
@@ -51,7 +46,7 @@ namespace Musicshop.Controllers
             string message = null;
             message = userrepo.Register(register);
 
-            if (message == "Succes")
+            if (message == "Success")
             {
                 ViewBag.Message = "Account is succesvol aangemaakt!";
                 Login(register);
@@ -81,6 +76,49 @@ namespace Musicshop.Controllers
             {
                 return View();
             }           
+        }
+
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                var user = Session["User"] as User;
+                return View(user);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(User user)
+        {
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                string message = "";
+                message = userrepo.EditUser(user);
+
+                if (message == "Success")
+                {
+                    User newUser = new User();
+                    newUser = userrepo.GetUserById(user.Userid) as User;
+                    LogOut();
+                    Login(newUser);
+                    ViewBag.Message = "Uw gegevens zijn bijgewerkt!";                    
+                    return View(newUser);
+                }
+                else
+                {
+                    ViewBag.Message = "Er is een fout opgetreden!";
+                    return View();
+                }
+            }            
         }
     }
 }
