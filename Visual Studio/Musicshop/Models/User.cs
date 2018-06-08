@@ -7,7 +7,6 @@ namespace Musicshop.Models
 {
     public class User
     {
-
         public int Userid { get; set; }
         public Role Role { get; set; }
         public string Name { get; set; }
@@ -17,19 +16,6 @@ namespace Musicshop.Models
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public User()
-        {
-
-        }
-        //public User(Role role, string name, string address, string zipcode, string city, string email, string password)
-        //{
-        //    this.role = role;
-        //    this.name = name;
-        //    this.address = address;
-        //    this.zipcode = zipcode;
-        //    this.city = city;
-        //    this.email = email;
-        //    this.password = password;
-        //}
+        public User() { }
     }
 }

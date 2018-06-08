@@ -193,37 +193,6 @@ namespace Musicshop.DAL
             }
         }
 
-        public bool DeleteUser(User user)
-        {
-            using (SqlConnection connection = Database.Connection)
-            {
-                try
-                {
-                    SqlCommand sqlCom = connection.CreateCommand();
-
-                    sqlCom.CommandText = @"DELETE FROM Users WHERE email=@Email AND password=@Password";
-
-                    sqlCom.Parameters.Add("@Email", SqlDbType.VarChar);
-                    sqlCom.Parameters.Add("@Password", SqlDbType.VarChar);
-
-                    sqlCom.Parameters["@Email"].Value = user.Email;
-                    sqlCom.Parameters["@Password"].Value = user.Password;
-
-                    connection.Open();
-                    sqlCom.ExecuteNonQuery();
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-
         public object GetRoleById(int id)
         {
             using (SqlConnection connection = Database.Connection)

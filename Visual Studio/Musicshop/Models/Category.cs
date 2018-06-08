@@ -7,13 +7,9 @@ namespace Musicshop.Models
 {
     public class Category
     {
-        private string name;
+        public int CategoryId { get; set; }
+        public string Name { get; set; }
 
-        public string Name { get { return name; } }
-
-        public Category(string name)
-        {
-            this.name = name;
-        }
+        public Category() { }
     }
 }

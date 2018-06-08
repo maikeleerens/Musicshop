@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Musicshop.DAL;
 using Musicshop.Models;
 
-
 namespace Musicshop.BLL
 {
     public class UserRepo
@@ -28,11 +27,6 @@ namespace Musicshop.BLL
         public string EditUser(User user)
         {
             return context.EditUser(user);
-        }
-
-        public bool DeleteUser(User user)
-        {
-            return context.DeleteUser(user);
         }
 
         public object GetRoleById(int id)

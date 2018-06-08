@@ -44,7 +44,7 @@ else
                     <td>@user.Email</td>
                 </tr>
         </table>
-        @Html.ActionLink("Uw account gegevens aanpassen", "Edit", new { id = user.Userid, controller = "User" }, new { @class = "btn btn-success", id = user.Userid })
+        @Html.ActionLink("Uw account gegevens aanpassen", "Edit", new { controller = "User" }, new { @class = "btn btn-success" })
     </div>
     }
 }
