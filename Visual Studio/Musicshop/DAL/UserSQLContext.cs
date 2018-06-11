@@ -46,20 +46,20 @@ namespace Musicshop.DAL
                         while (reader.Read())
                         {
                             user.Userid = reader.GetInt32(0);
-                            user.Role = GetRoleById(reader.GetInt32(1)) as Role;
-                            user.Name = reader.GetString(2);
-                            user.Address = reader.GetString(3);
-                            user.Zipcode = reader.GetString(4);
-                            user.City = reader.GetString(5);
-                            user.Email = email;
-                            user.Password = password;
+                            user.Role = GetRoleById((int)reader["roleid"]) as Role;
+                            user.Name = (string)reader["name"];
+                            user.Address = (string)reader["address"];
+                            user.Zipcode = (string)reader["zipcode"];
+                            user.City = (string)reader["city"];
+                            user.Email = (string)reader["email"];
+                            user.Password = (string)reader["password"];
                         }
                     }
                     return user;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    Console.WriteLine(ex.Message);
                     connection.Close();
                     return "error";
                 }
@@ -129,20 +129,20 @@ namespace Musicshop.DAL
                         while (reader.Read())
                         {
                             user.Userid = id;
-                            user.Role = GetRoleById(reader.GetInt32(1)) as Role;
-                            user.Name = reader.GetString(2);
-                            user.Address = reader.GetString(3);
-                            user.Zipcode = reader.GetString(4);
-                            user.City = reader.GetString(5);
-                            user.Email = reader.GetString(6);
-                            user.Password = reader.GetString(7);
+                            user.Role = GetRoleById((int)reader["roleid"]) as Role;
+                            user.Name = (string)reader["name"];
+                            user.Address = (string)reader["address"];
+                            user.Zipcode = (string)reader["zipcode"];
+                            user.City = (string)reader["city"];
+                            user.Email = (string)reader["email"];
+                            user.Password = (string)reader["password"];
                         }
                     }
                     return user;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    Console.WriteLine(ex.Message);
                     connection.Close();
                     return "error";
                 }
@@ -183,7 +183,7 @@ namespace Musicshop.DAL
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    Console.WriteLine(ex.Message);
                     return "Error";
                 }
                 finally
@@ -199,9 +199,7 @@ namespace Musicshop.DAL
             {
                 try
                 {
-                    int roleid = 0;
-                    string name = "Error";
-
+                    Role role = new Role();
                     SqlCommand sqlCom = connection.CreateCommand();
 
                     sqlCom.CommandText = @"SELECT * FROM Roles WHERE roleid=@id";
@@ -215,16 +213,20 @@ namespace Musicshop.DAL
                     {
                         while (reader.Read())
                         {
-                            roleid = reader.GetInt32(0);
-                            name = reader.GetString(1);
+                            role.Roleid = id;
+                            role.Name = (string)reader["name"];
                         }
                     }
-                    Role role = new Role(roleid, name);
                     return role;
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                     return "error";
+                }
+                finally
+                {
+                    connection.Close();
                 }
             }
         }

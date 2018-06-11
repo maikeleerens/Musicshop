@@ -34,8 +34,8 @@ namespace Musicshop.DAL
         {
             Category category = new Category
             {
-                CategoryId = Convert.ToInt32(reader["categoryid"]),
-                Name = Convert.ToString(reader["name"])
+                CategoryId = (int)reader["categoryid"],
+                Name = (string)reader["categoryname"]
             };
 
             return category;

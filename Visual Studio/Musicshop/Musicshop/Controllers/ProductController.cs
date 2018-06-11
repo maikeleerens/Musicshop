@@ -10,9 +10,12 @@ namespace Musicshop.Controllers
 {
     public class ProductController : Controller
     {
-        public ActionResult Details()
+        ProductRepo productrepo = new ProductRepo();
+        public ActionResult Details(int id)
         {
-            return View();
+            Product product = new Product();
+            product = productrepo.GetProductById(id) as Product;
+            return View(product);
         }
     }
 }
