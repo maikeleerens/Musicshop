@@ -15,6 +15,7 @@ namespace Musicshop.Controllers
         {
             Product product = new Product();
             product = productrepo.GetProductById(id) as Product;
+            product.TotalPrice = Convert.ToDecimal(Request.Form["colourr"]); 
             return View(product);
         }
     }

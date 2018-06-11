@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Musicshop.Models;
@@ -12,20 +10,19 @@ namespace Musicshop.DAL
     public class ProductSQLContext
     {
         public object GetProductById(int id)
-        
-{
+        {
             using (SqlConnection connection = Database.Connection)
             {
                 try
                 {
                     Product product = new Product();
                     product.Model = new Model();
-                    product.Subcategory = new Subcategory();
+                    product.Subcategory = new Subcategory();                    
 
                     connection.Open();
                     SqlCommand sqlCom = connection.CreateCommand();
 
-                    sqlCom.CommandText = @"SELECT * FROM [Product] INNER JOIN Subcategory ON Product.subcategoryid = Subcategory.subcategoryid INNER JOIN ProductAttribute ON Product.productid = ProductAttribute.productid INNER JOIN Attribute ON Attribute.attributeid = ProductAttribute.attributeid WHERE Product.productid = @id";
+                    sqlCom.CommandText = @"SELECT * FROM [Product] INNER JOIN Subcategory ON Product.subcategoryid = Subcategory.subcategoryid WHERE Product.productid = @id";
                     sqlCom.Parameters.Add("@id", SqlDbType.Int);
                     sqlCom.Parameters["@id"].Value = id;
 
@@ -38,11 +35,10 @@ namespace Musicshop.DAL
                             product.Model = GetModelById((int)reader["modelid"]) as Model;
                             product.Name = (string)reader["productname"];
                             product.Description = (string)reader["description"];
-                            product.Stock = (int)reader["stock"];
                             product.BasePrice = (decimal)reader["baseprice"];
                         }
-                    }
-                    return product;
+                    }                    
+                    return GetProductAttributes(product);
                 }
                 catch (Exception Ex)
                 {
@@ -56,6 +52,42 @@ namespace Musicshop.DAL
             }
         }
 
+        public object GetProductAttributes(Product product)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                try
+                {
+                    product.AttributeList = new List<Models.Attribute>();
+
+                    connection.Open();
+                    SqlCommand sqlCom = connection.CreateCommand();
+
+                    sqlCom.CommandText = @"SELECT * FROM [ProductAttribute] INNER JOIN Attribute ON Attribute.attributeid = ProductAttribute.attributeid WHERE productid = @id";
+                    sqlCom.Parameters.Add("@id", SqlDbType.Int);
+                    sqlCom.Parameters["@id"].Value = product.ProductId;
+
+                    using (SqlDataReader reader = sqlCom.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            product.AttributeList.Add(new Models.Attribute {
+                                AttributeId = (int)reader["attributeid"],
+                                Name = (string)reader["attributename"],
+                                Price = (decimal)reader["attributeprice"],
+                                Value = (string)reader["value"]
+                            });                           
+                        }
+                    }
+                    return product;
+                }
+                catch (Exception Ex)
+                {
+                    Console.WriteLine(Ex.Message);
+                    return "error";
+                }
+            }
+        }
 
         public object GetModelById(int id)
         {

@@ -11,6 +11,7 @@ namespace Musicshop.BLL
     public class ProductRepo
     {
         ProductSQLContext context = new ProductSQLContext();
+
         public object GetProductById(int id)
         {            
             return context.GetProductById(id);
