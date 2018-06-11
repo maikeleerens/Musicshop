@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CategorySQLContext.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="ProductSQLContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserSQLContext.cs" />
   </ItemGroup>

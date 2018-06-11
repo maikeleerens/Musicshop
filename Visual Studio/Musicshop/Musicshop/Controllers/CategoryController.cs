@@ -11,11 +11,13 @@ namespace Musicshop.Controllers
     public class CategoryController : Controller
     {
         private CategoryRepo catrepo = new CategoryRepo();
-        public ActionResult GetAllcategories()
+        public ActionResult GetMenuItem()
         {
             List<Category> categories = catrepo.GetAllCategories();
 
-            return View(categories);
+            IEnumerable<Category> menu = categories;
+
+            return PartialView("_menu", menu);
         }
     }
 }
