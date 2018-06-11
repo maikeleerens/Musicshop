@@ -170,5 +170,43 @@ namespace Musicshop.DAL
                 }
             }
         }
+
+        public List<Review> GetAllReviewsForProduct(int id)
+        {
+            var categories = new List<Review>();            
+
+            using (SqlConnection connection = Database.Connection)
+            {
+                connection.Open();
+                SqlCommand sqlCom = connection.CreateCommand();
+
+                sqlCom.CommandText = @"SELECT * FROM [Reviews] WHERE reviewid = @id";
+                sqlCom.Parameters.Add("@id", SqlDbType.Int);
+                sqlCom.Parameters["@id"].Value = id;
+
+                using (SqlDataReader reader = sqlCom.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        categories.Add(ReviewFromReader(reader));
+                    }
+                }
+                return categories;
+            }
+        }
+
+        public Review ReviewFromReader(SqlDataReader reader)
+        {
+            UserSQLContext userContext = new UserSQLContext();
+            Review review = new Review            
+            {
+                ReviewId = (int)reader["reviewid"],
+                User = userContext.GetUserById((int)reader["userid"]) as User,
+                Product = GetProductById((int)reader["productid"]) as Product,
+                Rating = (int)reader["rating"],
+                Message = (string)reader["reviewmessage"]
+            };
+            return review;
+        }
     }
 }

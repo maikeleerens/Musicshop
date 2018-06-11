@@ -258,6 +258,7 @@
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\Shared\_menu.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Shared\_Reviews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

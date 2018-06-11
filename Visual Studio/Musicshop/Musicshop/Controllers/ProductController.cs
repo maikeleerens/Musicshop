@@ -18,5 +18,14 @@ namespace Musicshop.Controllers
             product.TotalPrice = Convert.ToDecimal(Request.Form["colourr"]); 
             return View(product);
         }
+
+        public ActionResult GetReviews(int id)
+        {
+            List<Review> reviews = productrepo.GetAllReviewsForProduct(id);
+
+            IEnumerable<Review> list = reviews;
+
+            return PartialView("_Reviews", list);
+        }
     }
 }

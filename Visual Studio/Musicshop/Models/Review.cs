@@ -7,14 +7,10 @@ namespace Musicshop.Models
 {
     public class Review
     {
-        private User user;
-        private Product product;
-        private int rating;
-        private string message;
-
-        public User User { get { return user; } }
-        public Product Product { get { return product; } }
-        public int Rating { get { return rating; } }
-        public string Message { get { return message; } }
+        public int ReviewId { get; set; }
+        public User User { get; set; }
+        public Product Product { get; set; }
+        public int Rating { get; set; }
+        public string Message { get; set; }
     }
 }
