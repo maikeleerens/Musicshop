@@ -26,5 +26,35 @@ namespace Musicshop.Controllers
 
             return PartialView("_Reviews", list);
         }
+
+        [HttpGet]
+        public ActionResult AddReview()
+        {
+            return PartialView("_AddReview");
+        }
+
+        [HttpPost]
+        public ActionResult AddReview(Review review)
+        {
+            UserRepo userrepo = new UserRepo();
+            review.User = userrepo.GetUserById(Convert.ToInt32(Request.Form["userid"])) as User;
+            review.Product = productrepo.GetProductById(Convert.ToInt32(Request.Form["productid"])) as Product;
+            review.Rating = Convert.ToInt32(Request.Form["rating"]);
+            review.Message = Request.Form["message"].ToString();
+
+            string message = null;
+            message = productrepo.AddReview(review);
+
+            if (message == "Success")
+            {
+                ViewBag.Message = "Bedankt voor uw feedback!";
+                return View("Details");
+            }
+            else
+            {
+                ViewBag.Message = "Er is iets misgegaan!";
+                return View("Details");
+            }
+        }
     }
 }

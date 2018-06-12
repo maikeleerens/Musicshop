@@ -12,5 +12,6 @@ namespace Musicshop.Models
         public Product Product { get; set; }
         public int Rating { get; set; }
         public string Message { get; set; }
+        public DateTime ReviewDate { get; set; }
     }
 }

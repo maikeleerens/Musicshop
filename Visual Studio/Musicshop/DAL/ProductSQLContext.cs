@@ -231,6 +231,44 @@ namespace Musicshop.DAL
             }
         }
 
+        public string AddReview(Review review)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                try
+                {
+                    SqlCommand sqlCom = connection.CreateCommand();
+
+                    sqlCom.CommandText = @"INSERT INTO [Reviews](userid, productid, rating, reviewmessage, reviewdate) 
+                                        VALUES (@Userid, @Productid, @Rating, @Reviewmessage, @Reviewdate)";
+                    sqlCom.Parameters.Add("@Userid", SqlDbType.Int);
+                    sqlCom.Parameters.Add("@Productid", SqlDbType.Int);
+                    sqlCom.Parameters.Add("@Rating", SqlDbType.Int);
+                    sqlCom.Parameters.Add("@Reviewmessage", SqlDbType.NChar);
+                    sqlCom.Parameters.Add("@Reviewdate", SqlDbType.DateTime);
+
+                    sqlCom.Parameters["@Userid"].Value = review.User.Userid;
+                    sqlCom.Parameters["@Productid"].Value = review.Product.ProductId;
+                    sqlCom.Parameters["@Rating"].Value = review.Rating;
+                    sqlCom.Parameters["@Reviewmessage"].Value = review.Message;
+                    sqlCom.Parameters["@Reviewdate"].Value = DateTime.Now;
+
+                    connection.Open();
+                    sqlCom.ExecuteNonQuery();
+                    return "Success";
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    return "Error";
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         public Review ReviewFromReader(SqlDataReader reader)
         {
             UserSQLContext userContext = new UserSQLContext();
@@ -240,7 +278,8 @@ namespace Musicshop.DAL
                 User = userContext.GetUserById((int)reader["userid"]) as User,
                 Product = GetProductById((int)reader["productid"]) as Product,
                 Rating = (int)reader["rating"],
-                Message = (string)reader["reviewmessage"]
+                Message = (string)reader["reviewmessage"],
+                ReviewDate = (DateTime)reader["reviewdate"]
             };
             return review;
         }
