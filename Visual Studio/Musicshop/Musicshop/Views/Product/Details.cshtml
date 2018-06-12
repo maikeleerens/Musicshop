@@ -1,0 +1,221 @@
+﻿@using Musicshop.Models
+@model Musicshop.Models.Product
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- Product main img -->
+            <div class="col-md-5 col-md-push-2">
+                <div id="product-main-img">
+                    <div class="product-preview">
+                        <img src="~/Content/Images/lespaul1.jpg" alt="">
+                    </div>
+
+                    <div class="product-preview">
+                        <img src="~/Content/Images/lespaul2.jpg" alt="">
+                    </div>
+
+                    <div class="product-preview">
+                        <img src="~/Content/Images/lespaul3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- /Product main img -->
+            <!-- Product thumb imgs -->
+            <div class="col-md-2  col-md-pull-5">
+                <div id="product-imgs">
+                    <div class="product-preview">
+                        <img src="~/Content/Images/lespaul1.jpg" alt="">
+                    </div>
+
+                    <div class="product-preview">
+                        <img src="~/Content/Images/lespaul2.jpg" alt="">
+                    </div>
+
+                    <div class="product-preview">
+                        <img src="~/Content/Images/lespaul3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- /Product thumb imgs -->
+            <!-- Product details -->
+            <div class="col-md-5">
+                <div class="product-details">
+                    <h2 class="product-name">@Model.Name</h2>
+                    <div>
+                        @if (Model.Totalrating <= 0)
+                        {
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        }
+                        else if (Model.Totalrating <= 1)
+                        {
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        }
+                        else if (Model.Totalrating <= 2)
+                        {
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        }
+                        else if (Model.Totalrating <= 3)
+                        {
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        }
+                        else if (Model.Totalrating <= 4)
+                        {
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        }
+                    </div>
+                    <div>
+                        <h3 class="product-price"><span class="product-price">€</span><span id="productPrice">@Model.BasePrice</span></h3>
+                        <span class="product-available">In Stock</span>
+                    </div>
+                    <p>@Model.Description</p>
+                    <table class="table" style="float:left;">
+                        @foreach (var item in Model.AttributeList)
+                        {
+                            if (item.Name != "Colour")
+                            {
+                                <tr>
+                                    <th>@item.Name</th>
+                                    <td>@item.Value</td>
+                                </tr>
+                            }
+                        }
+                    </table>
+
+                    <div class="product-options">
+                        <label>
+                            Color
+                            <select name="colour" id="colourPrice" class="input-select" style="width:100%" onchange="updatePrice();" data-baseprice="@Model.BasePrice">
+                                @{int colourIndex = 0; }
+                                @foreach (var colour in Model.AttributeList)
+                                {
+                                    if (colour.Name == "Colour")
+                                    {
+                                        <option @(colourIndex == 0 ? "selected" : "" ) value="@colour.Price">@colour.Value - @colour.Price</option>
+                                    }
+                                    colourIndex++;
+                                }
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="add-to-cart">
+                        <div class="qty-label">
+                            Qty
+                            <div class="input-number">
+                                <input type="number">
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> add to cart</button>
+                    </div>
+
+                    <ul class="product-btns">
+                        <li><a href="#"><i class="far fa-heart"></i> add to wishlist</a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <!-- /Product details -->
+            <!-- Product tab -->
+            <div class="col-md-12">
+                <div id="product-tab">
+                    <!-- product tab nav -->
+                    <ul class="tab-nav">
+                        <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
+                        <li><a data-toggle="tab" href="#tab2">Details</a></li>
+                        <li><a data-toggle="tab" href="#tab3">Reviews</a></li>
+                    </ul>
+                    <!-- /product tab nav -->
+                    <!-- product tab content -->
+                    <div class="tab-content">
+                        <!-- tab1  -->
+                        <div id="tab1" class="tab-pane fade in active">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>@Model.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /tab1  -->
+                        <!-- tab2  -->
+                        <div id="tab2" class="tab-pane fade in">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table" style="float:left;">
+                                        @foreach (var item in Model.AttributeList)
+                                        {
+                                            if (item.Name != "Colour")
+                                            {
+                                                <tr>
+                                                    <th>@item.Name</th>
+                                                    <td>@item.Value</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /tab2  -->
+                        <!-- tab3  -->
+                        @Html.Action("GetReviews", "Product")
+                        <!-- /tab3  -->
+                    </div>
+                    <!-- /product tab content  -->
+                </div>
+            </div>
+            <!-- /product tab -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+
+<script>
+    updatePrice();
+    function updatePrice() {
+        var colourprice = document.getElementById('colourPrice');
+        var colourpriceValue = colourprice.value.replace(/,/g, '.');
+        var productprice = colourprice.dataset.baseprice.replace(/,/g, '.')
+        document.getElementById('productPrice').innerText = (+colourpriceValue + +productprice).toFixed(2).replace(/\./g, ',');
+    }
+</script>
+<!-- /SECTION -->

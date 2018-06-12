@@ -1,4 +1,4 @@
-﻿@using Musicshop.Models;
+﻿@using Musicshop.Models
     <!DOCTYPE html>
     <html>
     <head>
@@ -6,19 +6,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@ViewBag.Title - Musicshop</title>
-        @* Extra header tags suchs as a robots noindex can be added via @ViewBag.Inject*@
         @Html.Raw(ViewBag.Inject)
 
         @Styles.Render("~/Content/css")
         @Styles.Render("~/Content/style")
         @Styles.Render("~/Content/Font-Awesome")
+        @Styles.Render("~/Content/Slick")
         @Scripts.Render("~/bundles/modernizr")
 
         @{
             var user = Session["User"] as User;
         }
     </head>
-
     <body class="@ViewBag.BodyClass">
         <!-- HEADER -->
         <header>
@@ -26,9 +25,9 @@
             <div id="top-header">
                 <div class="container">
                     <ul class="header-links pull-left">
-                        <li><a href="#"><i class="fas fa-phone"></i> +021-95-51-84</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +3123456789</a></li>
                         <li><a href="#"><i class="fas fa-envelope"></i> email@email.com</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker"></i> 1234 Grappige Plaatsnaam</a></li>
                     </ul>
                     @if (user != null)
                     {
@@ -43,7 +42,7 @@
                         else if (user.Role.Roleid == 2)
                         {
                             <ul class="header-links pull-right">
-                                <li><i class="far fa-user"></i>@Html.ActionLink("Dashboard", "EstateOverviewForAdmin", "Estate")</li>
+                                <li><i class="far fa-user"></i>@Html.ActionLink("Mijn account", "MyAccount", "User")</li>
                                 <li><i class="fas fa-sign-out-alt"></i>@Html.ActionLink("Uitloggen", "LogOut", "User")</li>
                             </ul>
                         }
@@ -67,7 +66,7 @@
                         <!-- LOGO -->
                         <div class="col-md-3">
                             <div class="header-logo">
-                                <a href="@Url.Action("Index", "Home") class="logo">
+                                <a href="@Url.Action("Index", "Home")" class="logo">
                                     <img src="~/Content/Images/logo.png" alt="Musicshop">
                                 </a>
                             </div>
@@ -142,14 +141,6 @@
                                     </div>
                                 </div>
                                 <!-- /Cart -->
-                                <!-- Menu Toogle -->
-                                <div class="menu-toggle">
-                                    <a href="#">
-                                        <i class="fas fa-bars"></i>
-                                        <span>Menu</span>
-                                    </a>
-                                </div>
-                                <!-- /Menu Toogle -->
                             </div>
                         </div>
                         <!-- /ACCOUNT -->
@@ -161,55 +152,11 @@
             <!-- /MAIN HEADER -->
         </header>
         <!-- /HEADER -->
-
         <!-- NAVIGATION -->
-        <nav id="navigation">
-            <!-- container -->
-            <div class="container">
-                <!-- responsive-nav -->
-                <div id="responsive-nav">
-                    <!-- NAV -->
-                    <ul class="main-nav nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Hot Deals</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Laptops</a></li>
-                        <li><a href="#">Smartphones</a></li>
-                        <li><a href="#">Cameras</a></li>
-                        <li><a href="#">Accessories</a></li>
-                    </ul>
-                    <!-- /NAV -->
-                </div>
-                <!-- /responsive-nav -->
-            </div>
-            <!-- /container -->
-        </nav>
+        @Html.Action("GetMenuItem", "Category")        
         <!-- /NAVIGATION -->
 
-        <!-- BREADCRUMB -->
-        <div id="breadcrumb" class="section">
-            <!-- container -->
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="breadcrumb-header">Regular Page</h3>
-                        <ul class="breadcrumb-tree">
-                            <li><a href="#">Home</a></li>
-                            <li class="active">Blank</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /BREADCRUMB -->
-
-
-        <div class="container body-content">
-            @RenderBody()
-        </div>
+            @RenderBody()       
 
         <!-- FOOTER -->
         <footer id="footer">
@@ -300,8 +247,6 @@
                                 Copyright &copy;
                                 2018 - Musicshop
                             </span>
-
-
                         </div>
                     </div>
                     <!-- /row -->
@@ -311,3 +256,5 @@
             <!-- /bottom footer -->
         </footer>
         <!-- /FOOTER -->
+    </body>
+    </html>

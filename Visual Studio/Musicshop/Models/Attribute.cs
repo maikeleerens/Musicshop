@@ -7,16 +7,9 @@ namespace Musicshop.Models
 {
     public class Attribute
     {
-        private string name;
-        private string value;
-
-        public string Name { get { return name; } }
-        public string Value { get { return value; } }
-
-        public Attribute(string name, string value)
-        {
-            this.name = name;
-            this.value = value;
-        }
+        public int AttributeId { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
+        public decimal Price { get; set; }
     }
 }

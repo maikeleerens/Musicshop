@@ -1,0 +1,80 @@
+﻿@using Musicshop.Models
+@model IEnumerable<Musicshop.Models.Review>
+
+<div id="tab3" class="tab-pane fade in">
+    <div class="row">
+        <!-- Reviews -->
+        <div class="col-md-6">
+            <div id="reviews">
+                <ul class="reviews">
+                    @foreach (Review item in Model)
+                    {
+                        <li>
+                            <div class="review-heading">
+                                <h5 class="name">@item.User.Name</h5>
+                                <p class="date">@item.ReviewDate</p>
+                                <div class="review-rating">
+                                    @if (item.Rating <= 1)
+                                    {
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    }
+                                    else if (item.Rating <= 2)
+                                    {
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    }
+                                    else if (item.Rating <= 3)
+                                    {
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    }
+                                    else if (item.Rating <= 4)
+                                    {
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="review-body">
+                                <p>@item.Message</p>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                @*<ul class="reviews-pagination">
+                    <li class="active">1</li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                </ul>*@
+            </div>
+        </div>
+        <!-- /Reviews -->
+        <!-- Review Form -->
+                @Html.Action("AddReview", "Product")
+                <!-- /Review Form -->
+            </div>
+        </div>
