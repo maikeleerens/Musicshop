@@ -16,5 +16,15 @@ namespace Musicshop.BLL
         {            
             return context.GetProductById(id);
         }
+
+        public List<Review> GetAllReviews(int id)
+        {
+            return context.GetAllReviews(id);
+        }
+
+        public string AddReview(Review review)
+        {
+            return context.AddReview(review);
+        }
     }
 }

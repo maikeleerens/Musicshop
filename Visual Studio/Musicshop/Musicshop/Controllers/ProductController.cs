@@ -15,8 +15,44 @@ namespace Musicshop.Controllers
         {
             Product product = new Product();
             product = productrepo.GetProductById(id) as Product;
-            product.TotalPrice = Convert.ToDecimal(Request.Form["colourr"]); 
             return View(product);
+        }
+
+        public ActionResult GetReviews(int id)
+        {
+            List<Review> reviews = productrepo.GetAllReviews(id);
+
+            IEnumerable<Review> list = reviews;
+
+            return PartialView("_Reviews", list);
+        }
+
+        [HttpGet]
+        public ActionResult AddReview()
+        {
+            return PartialView("_AddReview");
+        }
+
+        [HttpPost]
+        public ActionResult AddReview(Review review)
+        {
+            UserRepo userrepo = new UserRepo();
+            review.User = userrepo.GetUserById(Convert.ToInt32(Request.Form["userid"])) as User;
+            review.Product = productrepo.GetProductById(Convert.ToInt32(Request.Form["productid"])) as Product;
+            review.Rating = Convert.ToInt32(Request.Form["rating"]);
+            review.Message = Request.Form["message"].ToString();
+
+            string message = null;
+            message = productrepo.AddReview(review);
+
+            if (message == "Success")
+            {
+                return RedirectToAction("Details", new { id = review.Product.ProductId });
+            }
+            else
+            {
+                return RedirectToAction("Details", new { id = review.Product.ProductId });
+            }
         }
     }
 }

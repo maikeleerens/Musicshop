@@ -6,7 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@ViewBag.Title - Musicshop</title>
-        @* Extra header tags suchs as a robots noindex can be added via @ViewBag.Inject*@
         @Html.Raw(ViewBag.Inject)
 
         @Styles.Render("~/Content/css")
@@ -152,31 +151,9 @@
             <!-- /MAIN HEADER -->
         </header>
         <!-- /HEADER -->
-
         <!-- NAVIGATION -->
         @Html.Action("GetMenuItem", "Category")
         <!-- /NAVIGATION -->
-
-        <!-- BREADCRUMB -->
-        <div id="breadcrumb" class="section">
-            <!-- container -->
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="breadcrumb-header">Regular Page</h3>
-                        <ul class="breadcrumb-tree">
-                            <li><a href="#">Home</a></li>
-                            <li class="active">Blank</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /BREADCRUMB -->
-
 
         <div class="container body-content">
             @RenderBody()
@@ -280,3 +257,5 @@
             <!-- /bottom footer -->
         </footer>
         <!-- /FOOTER -->
+    </body>
+    </html>
