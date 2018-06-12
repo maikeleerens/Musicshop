@@ -5,6 +5,7 @@
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <!-- SECTION -->
 <div class="section">
     <!-- container -->
@@ -68,7 +69,7 @@
                         <a class="review-link" href="#">10 Review(s) | Add your review</a>
                     </div>
                     <div>
-                        <h3 class="product-price">€@(Model.BasePrice)</h3>
+                        <h3 class="product-price"><span class="product-price">€</span><span id="productPrice">@Model.BasePrice</span></h3>
                         <span class="product-available">In Stock</span>
                     </div>
                     <p>@Model.Description</p>
@@ -88,13 +89,15 @@
                     <div class="product-options">
                         <label>
                             Color
-                            <select name="colourr" class="input-select" style="width:100%">
+                            <select name="colour" id="colourPrice" class="input-select" style="width:100%" onchange="updatePrice();" data-baseprice="@Model.BasePrice">
+                                @{int colourIndex = 0; }
                                 @foreach (var colour in Model.AttributeList)
                                 {
                                     if (colour.Name == "Colour")
                                     {
-                                        <option value="@colour.Price">@colour.Value</option>
+                                        <option @(colourIndex == 0 ? "selected": "" ) value="@colour.Price">@colour.Value - @colour.Price</option>
                                     }
+                                    colourIndex++;
                                 }
                             </select>
                         </label>
@@ -173,6 +176,16 @@
     </div>
     <!-- /container -->
 </div>
+
+<script>
+    updatePrice();
+    function updatePrice() {
+        var colourprice = document.getElementById('colourPrice');
+        var colourpriceValue = colourprice.value.replace(/,/g, '.');
+        var productprice = colourprice.dataset.baseprice.replace(/,/g, '.')
+        document.getElementById('productPrice').innerText = (+colourpriceValue + +productprice).toFixed(2).replace(/\./g, ',');
+    }
+</script>
 <!-- /SECTION -->
 
 @*<div>
