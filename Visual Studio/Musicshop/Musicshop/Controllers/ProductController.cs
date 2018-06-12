@@ -47,13 +47,11 @@ namespace Musicshop.Controllers
 
             if (message == "Success")
             {
-                ViewBag.Message = "Bedankt voor uw feedback!";
-                return View("Details");
+                return RedirectToAction("Details", new { id = review.Product.ProductId });
             }
             else
             {
-                ViewBag.Message = "Er is iets misgegaan!";
-                return View("Details");
+                return RedirectToAction("Details", new { id = review.Product.ProductId });
             }
         }
     }
