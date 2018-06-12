@@ -15,13 +15,12 @@ namespace Musicshop.Controllers
         {
             Product product = new Product();
             product = productrepo.GetProductById(id) as Product;
-            product.TotalPrice = Convert.ToDecimal(Request.Form["colourr"]); 
             return View(product);
         }
 
         public ActionResult GetReviews(int id)
         {
-            List<Review> reviews = productrepo.GetAllReviewsForProduct(id);
+            List<Review> reviews = productrepo.GetAllReviews(id);
 
             IEnumerable<Review> list = reviews;
 

@@ -17,8 +17,8 @@ namespace Musicshop.DAL
                 {
                     Product product = new Product();
                     product.Model = new Model();
-                    product.Subcategory = new Subcategory();                    
-
+                    product.Subcategory = new Subcategory();
+                    product.Totalrating = GetTotalRating(id);
                     connection.Open();
                     SqlCommand sqlCom = connection.CreateCommand();
 
@@ -35,7 +35,7 @@ namespace Musicshop.DAL
                             product.Model = GetModelById((int)reader["modelid"]) as Model;
                             product.Name = (string)reader["productname"];
                             product.Description = (string)reader["description"];
-                            product.BasePrice = (decimal)reader["baseprice"];
+                            product.BasePrice = (decimal)reader["baseprice"];                            
                         }
                     }                    
                     return GetProductAttributes(product);
@@ -171,16 +171,16 @@ namespace Musicshop.DAL
             }
         }
 
-        public List<Review> GetAllReviewsForProduct(int id)
+        public List<Review> GetAllReviews(int id)
         {
-            var categories = new List<Review>();            
+            var reviews = new List<Review>();            
 
             using (SqlConnection connection = Database.Connection)
             {
                 connection.Open();
                 SqlCommand sqlCom = connection.CreateCommand();
 
-                sqlCom.CommandText = @"SELECT * FROM [Reviews] WHERE reviewid = @id";
+                sqlCom.CommandText = @"SELECT * FROM [Reviews] WHERE productid = @id";
                 sqlCom.Parameters.Add("@id", SqlDbType.Int);
                 sqlCom.Parameters["@id"].Value = id;
 
@@ -188,10 +188,46 @@ namespace Musicshop.DAL
                 {
                     while (reader.Read())
                     {
-                        categories.Add(ReviewFromReader(reader));
+                        reviews.Add(ReviewFromReader(reader));
                     }
                 }
-                return categories;
+                return reviews;
+            }
+        }
+
+        public decimal GetTotalRating(int id)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                try
+                {
+                    decimal rating = 0;
+                    SqlCommand sqlCom = connection.CreateCommand();
+
+                    sqlCom.CommandText = @"SELECT AVG(rating) FROM [Reviews] WHERE productid = @id";
+                    sqlCom.Parameters.Add("@id", SqlDbType.Int);
+                    sqlCom.Parameters["@id"].Value = id;
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = sqlCom.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            rating = Convert.ToDecimal(reader[0]);
+                        }
+                    }
+                    return rating;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
 

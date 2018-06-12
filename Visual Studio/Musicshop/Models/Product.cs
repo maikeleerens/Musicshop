@@ -15,6 +15,6 @@ namespace Musicshop.Models
         public List<Attribute> AttributeList { get; set; }
         public int Stock { get; set; }
         public decimal BasePrice { get; set; }
-        public decimal TotalPrice { get; set; }
+        public decimal Totalrating { get; set; }
     }
 }
