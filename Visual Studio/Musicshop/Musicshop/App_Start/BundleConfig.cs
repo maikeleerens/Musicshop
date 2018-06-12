@@ -24,11 +24,8 @@ namespace Musicshop
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/font.css",
-                      "~/Content/bootstrap.css",                      
-                      "~/Content/site.css",                 
-                      "~/Content/slick.css",
-                      "~/Content/slick-theme.css",
-                      "~/Content/nouislider.min.css"));
+                      "~/Content/bootstrap.min.css",                      
+                      "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/Font-Awesome").Include(
                       "~/Content/fa-brands.css",
@@ -36,6 +33,10 @@ namespace Musicshop
                       "~/Content/fa-solid.css",
                       "~/Content/fontawesome-all.css",
                       "~/Content/fontawesome.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Slick").Include(
+                      "~/Content/slick.css",
+                      "~/Content/slick-theme.css"));
 
             bundles.Add(new StyleBundle("~/content/style").Include(
                       "~/Content/style.css"));

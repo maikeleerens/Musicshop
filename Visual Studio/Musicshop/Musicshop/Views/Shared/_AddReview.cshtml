@@ -1,5 +1,13 @@
 ﻿@using  Musicshop.Models
-@{ User user = (User)Session["User"];}
+@{ User user = new User();}
+@if (Session["User"] != null)
+{
+    user = (User)Session["User"];
+}
+else
+{
+    user.Userid = 0;
+}
 
 @using (Html.BeginForm("AddReview", "Product", FormMethod.Post))
 {

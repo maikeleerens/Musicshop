@@ -16,19 +16,15 @@
             <div class="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     <div class="product-preview">
-                        <img src="./img/product01.png" alt="">
+                        <img src="~/Content/Images/lespaul1.jpg" alt="">
                     </div>
 
                     <div class="product-preview">
-                        <img src="./img/product03.png" alt="">
+                        <img src="~/Content/Images/lespaul2.jpg" alt="">
                     </div>
 
                     <div class="product-preview">
-                        <img src="./img/product06.png" alt="">
-                    </div>
-
-                    <div class="product-preview">
-                        <img src="./img/product08.png" alt="">
+                        <img src="~/Content/Images/lespaul3.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -37,19 +33,15 @@
             <div class="col-md-2  col-md-pull-5">
                 <div id="product-imgs">
                     <div class="product-preview">
-                        <img src="./img/product01.png" alt="">
+                        <img src="~/Content/Images/lespaul1.jpg" alt="">
                     </div>
 
                     <div class="product-preview">
-                        <img src="./img/product03.png" alt="">
+                        <img src="~/Content/Images/lespaul2.jpg" alt="">
                     </div>
 
                     <div class="product-preview">
-                        <img src="./img/product06.png" alt="">
-                    </div>
-
-                    <div class="product-preview">
-                        <img src="./img/product08.png" alt="">
+                        <img src="~/Content/Images/lespaul3.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -135,7 +127,7 @@
                                 {
                                     if (colour.Name == "Colour")
                                     {
-                                        <option @(colourIndex == 0 ? "selected": "" ) value="@colour.Price">@colour.Value - @colour.Price</option>
+                                        <option @(colourIndex == 0 ? "selected" : "" ) value="@colour.Price">@colour.Value - @colour.Price</option>
                                     }
                                     colourIndex++;
                                 }

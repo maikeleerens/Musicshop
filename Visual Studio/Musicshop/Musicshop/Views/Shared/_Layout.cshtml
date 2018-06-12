@@ -11,6 +11,7 @@
         @Styles.Render("~/Content/css")
         @Styles.Render("~/Content/style")
         @Styles.Render("~/Content/Font-Awesome")
+        @Styles.Render("~/Content/Slick")
         @Scripts.Render("~/bundles/modernizr")
 
         @{
@@ -152,12 +153,10 @@
         </header>
         <!-- /HEADER -->
         <!-- NAVIGATION -->
-        @Html.Action("GetMenuItem", "Category")
+        @Html.Action("GetMenuItem", "Category")        
         <!-- /NAVIGATION -->
 
-        <div class="container body-content">
-            @RenderBody()
-        </div>
+            @RenderBody()       
 
         <!-- FOOTER -->
         <footer id="footer">
