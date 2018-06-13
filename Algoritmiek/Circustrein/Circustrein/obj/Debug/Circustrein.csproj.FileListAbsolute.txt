@@ -1,0 +1,10 @@
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\Circustrein\bin\Debug\Circustrein.exe.config
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\Circustrein\bin\Debug\Circustrein.exe
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\Circustrein\bin\Debug\Circustrein.pdb
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\Circustrein\obj\Debug\Circustrein.csprojAssemblyReference.cache
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\Circustrein\obj\Debug\Circustrein.Form.resources
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\Circustrein\obj\Debug\Circustrein.Properties.Resources.resources
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\Circustrein\obj\Debug\Circustrein.csproj.GenerateResource.cache
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\Circustrein\obj\Debug\Circustrein.csproj.CoreCompileInputs.cache
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\Circustrein\obj\Debug\Circustrein.exe
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\Circustrein\obj\Debug\Circustrein.pdb
