@@ -8,7 +8,7 @@ namespace Circustrein.Models
 {
     class Animal
     {
-        private bool IsCarnivore { get; }
+        public bool IsCarnivore { get; set; }
 
         public Size AnimalSize { get; set; }
 

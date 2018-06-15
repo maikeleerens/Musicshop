@@ -13,10 +13,12 @@ namespace Circustrein
 {
     public partial class Form : System.Windows.Forms.Form
     {
+        private Logic logic;
         private List<Animal> AnimalList;
         public Form()
         {
             InitializeComponent();
+            logic = new Logic();
             AnimalList = new List<Animal>();
             combo_animalSize.DataSource = Enum.GetValues(typeof(Models.Size));
         }
@@ -33,6 +35,14 @@ namespace Circustrein
             {
                 lb_selectedAnimals.Items.Add(animal);
             }
+        }
+
+        private void btn_calculate_Click(object sender, EventArgs e)
+        {
+            lb_wagons.DataSource = null; ;
+            Train train = logic.CreateWagons(AnimalList);
+            lb_wagons.DataSource = train.GetWagons();
+            AnimalList.Clear();
         }
     }
 }

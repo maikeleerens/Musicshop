@@ -20,9 +20,9 @@ namespace Circustrein.Models
             return Wagons;
         }
 
-        public void AddWagon(Wagon wagon)
+        public void AddWagons(List<Wagon> wagon)
         {
-            Wagons.Add(wagon);
+            Wagons.AddRange(wagon);
         }
     }    
 }

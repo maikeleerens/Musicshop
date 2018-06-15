@@ -36,6 +36,7 @@
             this.lbl_amount = new System.Windows.Forms.Label();
             this.btn_addAnimal = new System.Windows.Forms.Button();
             this.num_amount = new System.Windows.Forms.NumericUpDown();
+            this.btn_calculate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.num_amount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,11 +110,22 @@
             this.num_amount.Size = new System.Drawing.Size(60, 20);
             this.num_amount.TabIndex = 8;
             // 
+            // btn_calculate
+            // 
+            this.btn_calculate.Location = new System.Drawing.Point(259, 132);
+            this.btn_calculate.Name = "btn_calculate";
+            this.btn_calculate.Size = new System.Drawing.Size(100, 23);
+            this.btn_calculate.TabIndex = 9;
+            this.btn_calculate.Text = "Calculate wagons";
+            this.btn_calculate.UseVisualStyleBackColor = true;
+            this.btn_calculate.Click += new System.EventHandler(this.btn_calculate_Click);
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 450);
+            this.Controls.Add(this.btn_calculate);
             this.Controls.Add(this.num_amount);
             this.Controls.Add(this.btn_addAnimal);
             this.Controls.Add(this.lbl_amount);
@@ -140,6 +152,7 @@
         private System.Windows.Forms.Label lbl_amount;
         private System.Windows.Forms.Button btn_addAnimal;
         private System.Windows.Forms.NumericUpDown num_amount;
+        private System.Windows.Forms.Button btn_calculate;
     }
 }
 
