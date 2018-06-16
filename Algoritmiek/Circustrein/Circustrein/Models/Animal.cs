@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Circustrein.Models
 {
-    class Animal
+    public class Animal
     {
         public bool IsCarnivore { get; set; }
 

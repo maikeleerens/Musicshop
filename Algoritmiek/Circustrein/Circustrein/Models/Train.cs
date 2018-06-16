@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Circustrein.Models
 {
-    class Train
+    public class Train
     {
         public List<Wagon> Wagons { get; }
 

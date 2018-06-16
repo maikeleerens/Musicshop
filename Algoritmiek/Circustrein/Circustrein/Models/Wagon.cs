@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Circustrein.Models;
 
-namespace Circustrein.Models
+namespace Circustrein
 {
-    class Wagon
+    public class Wagon
     {
-        private List<Animal> Animals;
-        private int AnimalCounter;
-        private Animal carnivore;
+        public List<Animal> Animals;
+        public int AnimalCounter;
+        public Animal carnivore;
 
         public Wagon()
         {
             Animals = new List<Animal>();
             AnimalCounter = 0;
             carnivore = null;
+        }
+
+        public List<Animal> GetAnimals()
+        {
+            return Animals;
         }
 
         public void AddAnimal(Animal animal)

@@ -7,7 +7,7 @@ using Circustrein.Models;
 
 namespace Circustrein
 {
-    class Logic
+    public class Logic
     {
         private List<Wagon> wagons;
         private Train train;

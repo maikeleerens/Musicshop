@@ -1,0 +1,17 @@
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\CircustreinTests.dll
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\CircustreinTests.pdb
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\Circustrein.exe
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\Circustrein.pdb
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\Circustrein.exe.config
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\obj\Debug\CircustreinTests.csprojAssemblyReference.cache
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\obj\Debug\CircustreinTests.csproj.CoreCompileInputs.cache
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\obj\Debug\CircustreinTests.csproj.CopyComplete
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\obj\Debug\CircustreinTests.dll
+D:\School\Fontys\Musicshop\Algoritmiek\Circustrein\CircustreinTests\obj\Debug\CircustreinTests.pdb
