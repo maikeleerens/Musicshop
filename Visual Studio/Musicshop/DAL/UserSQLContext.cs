@@ -76,23 +76,23 @@ namespace Musicshop.DAL
             {
                 try
                 {
-                    SqlCommand sqlCom = connection.CreateCommand();
+                    dynamic procedure = "InsertUser";
+                    SqlCommand sqlCom = new SqlCommand(procedure, connection);
 
-                    sqlCom.CommandText = @"INSERT INTO Users(name, address, zipcode, city, email, password) 
-                                        VALUES (@Name, @Address, @Zipcode, @City, @Email, @Password)";
-                    sqlCom.Parameters.Add("@Name", SqlDbType.NChar);
-                    sqlCom.Parameters.Add("@Address", SqlDbType.NChar);
-                    sqlCom.Parameters.Add("@Zipcode", SqlDbType.NChar);
-                    sqlCom.Parameters.Add("@City", SqlDbType.NChar);
-                    sqlCom.Parameters.Add("@Email", SqlDbType.NChar);
-                    sqlCom.Parameters.Add("@Password", SqlDbType.NChar);
+                    sqlCom.CommandType = CommandType.StoredProcedure;
+                    sqlCom.Parameters.Add("@name", SqlDbType.NChar);
+                    sqlCom.Parameters.Add("@address", SqlDbType.NChar);
+                    sqlCom.Parameters.Add("@zipcode", SqlDbType.NChar);
+                    sqlCom.Parameters.Add("@city", SqlDbType.NChar);
+                    sqlCom.Parameters.Add("@email", SqlDbType.NChar);
+                    sqlCom.Parameters.Add("@password", SqlDbType.NChar);
 
-                    sqlCom.Parameters["@Name"].Value = user.Name;
-                    sqlCom.Parameters["@Address"].Value = user.Address;
-                    sqlCom.Parameters["@Zipcode"].Value = user.Zipcode;
-                    sqlCom.Parameters["@City"].Value = user.City;
-                    sqlCom.Parameters["@Email"].Value = user.Email;
-                    sqlCom.Parameters["@Password"].Value = user.Password;
+                    sqlCom.Parameters["@name"].Value = user.Name;
+                    sqlCom.Parameters["@address"].Value = user.Address;
+                    sqlCom.Parameters["@zipcode"].Value = user.Zipcode;
+                    sqlCom.Parameters["@city"].Value = user.City;
+                    sqlCom.Parameters["@email"].Value = user.Email;
+                    sqlCom.Parameters["@password"].Value = user.Password;
 
                     connection.Open();
                     sqlCom.ExecuteNonQuery();
@@ -159,21 +159,22 @@ namespace Musicshop.DAL
             {
                 try
                 {
-                    SqlCommand sqlCom = connection.CreateCommand();
+                    dynamic procedure = "EditUser";
+                    SqlCommand sqlCom = new SqlCommand(procedure, connection);
 
-                    sqlCom.CommandText = @"UPDATE Users SET name=@Name, address=@Address, zipcode=@Zipcode, city=@City, email=@Email WHERE userid=@id";
-                    sqlCom.Parameters.Add("@Name", SqlDbType.NChar);
-                    sqlCom.Parameters.Add("@Address", SqlDbType.NChar);
-                    sqlCom.Parameters.Add("@Zipcode", SqlDbType.NChar);
-                    sqlCom.Parameters.Add("@City", SqlDbType.NChar);
-                    sqlCom.Parameters.Add("@Email", SqlDbType.NChar);
+                    sqlCom.CommandType = CommandType.StoredProcedure;
+                    sqlCom.Parameters.Add("@name", SqlDbType.NChar);
+                    sqlCom.Parameters.Add("@address", SqlDbType.NChar);
+                    sqlCom.Parameters.Add("@zipcode", SqlDbType.NChar);
+                    sqlCom.Parameters.Add("@city", SqlDbType.NChar);
+                    sqlCom.Parameters.Add("@email", SqlDbType.NChar);
                     sqlCom.Parameters.Add("@id", SqlDbType.Int);
 
-                    sqlCom.Parameters["@Name"].Value = user.Name;
-                    sqlCom.Parameters["@Address"].Value = user.Address;
-                    sqlCom.Parameters["@Zipcode"].Value = user.Zipcode;
-                    sqlCom.Parameters["@City"].Value = user.City;
-                    sqlCom.Parameters["@Email"].Value = user.Email;
+                    sqlCom.Parameters["@name"].Value = user.Name;
+                    sqlCom.Parameters["@address"].Value = user.Address;
+                    sqlCom.Parameters["@zipcode"].Value = user.Zipcode;
+                    sqlCom.Parameters["@city"].Value = user.City;
+                    sqlCom.Parameters["@email"].Value = user.Email;
                     sqlCom.Parameters["@id"].Value = user.Userid;
 
 

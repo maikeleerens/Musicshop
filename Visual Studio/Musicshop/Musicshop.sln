@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musicshop", "Musicshop\Musi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musicshop.Tests", "Musicshop.Tests\Musicshop.Tests.csproj", "{304B417A-EBB4-4A52-B3F9-CD43AAFBE36B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALTests", "DALTests\DALTests.csproj", "{273B04FF-8794-4539-B51B-F269B3585D08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{304B417A-EBB4-4A52-B3F9-CD43AAFBE36B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{304B417A-EBB4-4A52-B3F9-CD43AAFBE36B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{304B417A-EBB4-4A52-B3F9-CD43AAFBE36B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{273B04FF-8794-4539-B51B-F269B3585D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273B04FF-8794-4539-B51B-F269B3585D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273B04FF-8794-4539-B51B-F269B3585D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273B04FF-8794-4539-B51B-F269B3585D08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
